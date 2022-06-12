@@ -7,11 +7,32 @@ class CategoryItem extends StatelessWidget {
   final String id;
   final String title;
   final Color color;
+
+  void selectCategory(BuildContext context) {
+    Navigator.pushNamed(context, '/category-meal',
+        arguments: {'id': id, 'title': title});
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(15),
-      child: Text(title),
+    return InkWell(
+      onTap: () => selectCategory(context),
+      borderRadius: BorderRadius.circular(15),
+      child: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.titleSmall,
+          ),
+        ),
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [color.withOpacity(0.7), color],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter),
+            borderRadius: BorderRadius.circular(15)),
+      ),
     );
   }
 }

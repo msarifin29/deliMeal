@@ -4,11 +4,17 @@ import 'package:meals_app/dummy_data.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({Key? key}) : super(key: key);
+  static const routeName = '/category';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('DeliMeal')),
+      appBar: AppBar(
+          excludeHeaderSemantics: true,
+          title: Text(
+            'DeliMeal',
+          )),
       body: GridView(
+          padding: EdgeInsets.all(15),
           children: dummy_categories
               .map((dataCat) => CategoryItem(
                   id: dataCat.id, title: dataCat.title, color: dataCat.color))
