@@ -56,7 +56,7 @@ List<Category> dummy_categories = [
   ),
 ];
 
-var DUMMY_MEALS = [
+List<Meal> DUMMY_MEALS = [
   Meal(
     id: 'm1',
     categories: [

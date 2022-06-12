@@ -17,14 +17,19 @@ class CategoryMealScreen extends StatelessWidget {
     final categoryTitle = routArg['title'];
     final categoryMeal = DUMMY_MEALS.where((meal) {
       return meal.categories.contains(categoryId);
-    });
+    }).toList();
 
     return Scaffold(
         appBar: AppBar(
           title: Text(categoryTitle.toString()),
         ),
         body: ListView.builder(
-            itemBuilder: (context, index) => Text(categoryTitle.toString()),
+            itemBuilder: (context, index) => MealItem(
+                id: categoryMeal[index].id,
+                title: categoryMeal[index].title,
+                imageUrl: categoryMeal[index].imageUrl,
+                duration: categoryMeal[index].duration,
+                complexity: categoryMeal[index].complexity),
             itemCount: categoryMeal.length));
   }
 }
