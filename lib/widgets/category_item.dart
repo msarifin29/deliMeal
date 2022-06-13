@@ -23,7 +23,7 @@ class CategoryItem extends StatelessWidget {
           padding: const EdgeInsets.all(15.0),
           child: Text(
             title,
-            style: Theme.of(context).textTheme.titleSmall,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
         decoration: BoxDecoration(
