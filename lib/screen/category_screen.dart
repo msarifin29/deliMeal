@@ -8,11 +8,6 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          excludeHeaderSemantics: true,
-          title: Text(
-            'DeliMeal',
-          )),
       body: GridView(
           padding: EdgeInsets.all(15),
           children: dummy_categories
