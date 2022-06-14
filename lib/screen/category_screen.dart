@@ -9,12 +9,12 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GridView(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           children: dummy_categories
               .map((dataCat) => CategoryItem(
                   id: dataCat.id, title: dataCat.title, color: dataCat.color))
               .toList(),
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 200,
               childAspectRatio: 3 / 2,
               crossAxisSpacing: 20,

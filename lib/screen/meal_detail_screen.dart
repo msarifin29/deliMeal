@@ -17,7 +17,7 @@ class MealDetailScreen extends StatelessWidget {
         text,
         style: Theme.of(context).textTheme.titleLarge,
       ),
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
     );
   }
 
@@ -29,8 +29,8 @@ class MealDetailScreen extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: Colors.grey)),
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       height: 150,
       width: 300,
       child: child,
@@ -45,7 +45,7 @@ class MealDetailScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('${selectMeal.title}'),
+        title: Text(selectMeal.title),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -67,8 +67,8 @@ class MealDetailScreen extends StatelessWidget {
                   itemCount: selectMeal.ingredients.length,
                   itemBuilder: (ctx, index) => Card(
                         child: Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 5),
                           child: Text(selectMeal.ingredients[index]),
                         ),
                       )),

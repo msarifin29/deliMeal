@@ -56,6 +56,7 @@ List<Category> dummy_categories = [
   ),
 ];
 
+// ignore: non_constant_identifier_names
 List<Meal> DUMMY_MEALS = [
   Meal(
     id: 'm1',

@@ -64,7 +64,7 @@ class MealItem extends StatelessWidget {
             children: [
               Stack(children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(15),
                       topRight: Radius.circular(15)),
                   child: Image.network(imageUrl,
@@ -74,13 +74,13 @@ class MealItem extends StatelessWidget {
                     bottom: 20,
                     right: 10,
                     child: Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 20),
                       width: 230,
-                      decoration: BoxDecoration(color: Colors.black12),
+                      decoration: const BoxDecoration(color: Colors.black12),
                       child: Text(
                         title,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 30,
                         ),
@@ -90,29 +90,29 @@ class MealItem extends StatelessWidget {
                     )),
               ]),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Row(children: [
-                      Icon(Icons.schedule),
-                      SizedBox(width: 5),
+                      const Icon(Icons.schedule),
+                      const SizedBox(width: 5),
                       Text(
                         duration.toString(),
                         style: Theme.of(context).textTheme.bodyText1,
                       )
                     ]),
                     Row(children: [
-                      Icon(Icons.work),
-                      SizedBox(width: 5),
+                      const Icon(Icons.work),
+                      const SizedBox(width: 5),
                       Text(
                         complexityText.toString(),
                         style: Theme.of(context).textTheme.bodyText1,
                       )
                     ]),
                     Row(children: [
-                      Icon(Icons.attach_money),
-                      SizedBox(width: 5),
+                      const Icon(Icons.attach_money),
+                      const SizedBox(width: 5),
                       Text(
                         affordabilityText.toString(),
                         style: Theme.of(context).textTheme.bodyText1,
