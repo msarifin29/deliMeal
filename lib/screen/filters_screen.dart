@@ -20,8 +20,9 @@ class _FiltersState extends State<Filters> {
     return SwitchListTile(
       title: Text(
         title,
-        style: Theme.of(context).textTheme.titleLarge,
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
       ),
+      subtitle: Text(subTitle),
       value: currentValue,
       onChanged: updateValue,
       activeColor: Theme.of(context).colorScheme.secondary,
@@ -50,21 +51,21 @@ class _FiltersState extends State<Filters> {
                 _glutenFree = newValue;
               });
             }),
-            _buildSwitchListTile(
-                _vegan, 'GlutenFree', 'Only include vegan meals', (newValue) {
+            _buildSwitchListTile(_vegan, 'Vegan', 'Only include vegan meals',
+                (newValue) {
               setState(() {
                 _vegan = newValue;
               });
             }),
             _buildSwitchListTile(
-                _vegetarian, 'GlutenFree', 'Only include vegetarian meals',
+                _vegetarian, 'Vegetarian', 'Only include vegetarian meals',
                 (newValue) {
               setState(() {
                 _vegetarian = newValue;
               });
             }),
             _buildSwitchListTile(
-                _lactoseFree, 'GlutenFree', 'Only include lactoseFree meals',
+                _lactoseFree, 'LactoseFree', 'Only include lactoseFree meals',
                 (newValue) {
               setState(() {
                 _lactoseFree = newValue;
