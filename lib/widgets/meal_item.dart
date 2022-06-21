@@ -51,7 +51,6 @@ class MealItem extends StatelessWidget {
 
   void selectMeal(BuildContext context) {
     Navigator.pushNamed(context, '/meal-detail', arguments: id).then((result) {
-      print(result);
       if (result != null) {
         removeItem(result);
       }

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Filters extends StatefulWidget {
-  const Filters({Key? key}) : super(key: key);
+  const Filters(
+      {Key? key, required this.saveFilters, required this.currentFilters})
+      : super(key: key);
 
   static const routeName = '/filters';
+
+  final Function saveFilters;
+  final Map<String, bool> currentFilters;
 
   @override
   State<Filters> createState() => _FiltersState();
@@ -15,16 +20,25 @@ class _FiltersState extends State<Filters> {
   bool _vegetarian = false;
   bool _lactoseFree = false;
 
+  @override
+  initState() {
+    _glutenFree = widget.currentFilters['gluten']!;
+    _vegan = widget.currentFilters['vegan']!;
+    _vegetarian = widget.currentFilters['vegetarian']!;
+    _lactoseFree = widget.currentFilters['lactose']!;
+    super.initState();
+  }
+
   Widget _buildSwitchListTile(
-      bool currentValue, String title, String subTitle, updateValue) {
+      bool currentValue, String title, String subTitle, Function updateValue) {
     return SwitchListTile(
       title: Text(
         title,
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
       ),
       subtitle: Text(subTitle),
       value: currentValue,
-      onChanged: updateValue,
+      onChanged: (value) => updateValue(value),
       activeColor: Theme.of(context).colorScheme.secondary,
     );
   }
@@ -34,6 +48,19 @@ class _FiltersState extends State<Filters> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Filters'),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  final selectFilters = {
+                    'gluten': _glutenFree,
+                    'vegan': _vegan,
+                    'vegetarian': _vegetarian,
+                    'lactose': _lactoseFree
+                  };
+                  widget.saveFilters(selectFilters);
+                },
+                icon: const Icon(Icons.save_rounded))
+          ],
         ),
         body: ListView(
           children: [

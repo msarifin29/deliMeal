@@ -4,11 +4,11 @@ import '../models/meal.dart';
 import '../dummy_data.dart';
 
 class CategoryMealScreen extends StatefulWidget {
-  const CategoryMealScreen({
-    Key? key,
-  }) : super(key: key);
+  const CategoryMealScreen({Key? key, required this.availableMeals})
+      : super(key: key);
 
   static const routeName = '/category-meal';
+  final List<Meal> availableMeals;
 
   @override
   State<CategoryMealScreen> createState() => _CategoryMealScreenState();
@@ -26,7 +26,7 @@ class _CategoryMealScreenState extends State<CategoryMealScreen> {
       // ignore: unused_local_variable
       final categoryId = routArg['id'];
       categoryTitle = routArg['title'];
-      displayedMeals = DUMMY_MEALS.where((meal) {
+      displayedMeals = widget.availableMeals.where((meal) {
         return meal.categories.contains(categoryId);
       }).toList();
     }
@@ -34,7 +34,7 @@ class _CategoryMealScreenState extends State<CategoryMealScreen> {
     super.didChangeDependencies();
   }
 
-  _removeMeal(String mealId) {
+  void _removeMeal(String mealId) {
     setState(() {
       displayedMeals?.removeWhere((meal) => meal.id == mealId);
     });
