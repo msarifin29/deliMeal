@@ -28,10 +28,10 @@ class _MyAppState extends State<MyApp> {
 
   // ignore: unused_field
   List<Meal> _availableMeals = DUMMY_MEALS;
+  List<Meal> _favoriteMeals = [];
 
   _setFilters(Map<String, bool> filterData) {
     setState(() {
-      print(_filters);
       _filters = filterData;
       _availableMeals = DUMMY_MEALS.where((meal) {
         if (_filters['gluten']! && !meal.isGlutenFree) {
@@ -51,6 +51,24 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void toggleFavorite(String mealId) {
+    final existingIndex =
+        _favoriteMeals.indexWhere((meal) => meal.id == mealId);
+    if (existingIndex >= 0) {
+      setState(() {
+        _favoriteMeals.removeAt(existingIndex);
+      });
+    } else {
+      setState(() {
+        _favoriteMeals.add(DUMMY_MEALS.firstWhere((meal) => meal.id == mealId));
+      });
+    }
+  }
+
+  bool _isFavoriteMeals(String id) {
+    return _favoriteMeals.any((meal) => meal.id == id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -68,11 +86,16 @@ class _MyAppState extends State<MyApp> {
       ),
       initialRoute: '/tabs',
       routes: <String, WidgetBuilder>{
-        '/tabs': (context) => const TabsScreen(),
+        '/tabs': (context) => TabsScreen(
+              favoriteMeals: _favoriteMeals,
+            ),
         '/category-meal': (context) => CategoryMealScreen(
               availableMeals: _availableMeals,
             ),
-        '/meal-detail': (context) => const MealDetailScreen(),
+        '/meal-detail': (context) => MealDetailScreen(
+              favoriteMeals: toggleFavorite,
+              isFavorite: _isFavoriteMeals,
+            ),
         '/filters': (context) {
           return Filters(
             saveFilters: _setFilters,
@@ -83,7 +106,7 @@ class _MyAppState extends State<MyApp> {
       onUnknownRoute: (setting) {
         return MaterialPageRoute(builder: (context) => const CategoryScreen());
       },
-      home: const TabsScreen(),
+      // home: TabsScreen(),
     );
   }
 }

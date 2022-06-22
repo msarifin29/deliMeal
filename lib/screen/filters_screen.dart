@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/widgets/main_drawer.dart';
 
 class Filters extends StatefulWidget {
   const Filters(
@@ -62,6 +63,7 @@ class _FiltersState extends State<Filters> {
                 icon: const Icon(Icons.save_rounded))
           ],
         ),
+        drawer: const MainDrawer(),
         body: ListView(
           children: [
             Container(

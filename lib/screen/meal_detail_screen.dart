@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
-  const MealDetailScreen({
-    Key? key,
-  }) : super(key: key);
+  const MealDetailScreen(
+      {Key? key, required this.favoriteMeals, required this.isFavorite})
+      : super(key: key);
 
   static const routeName = '/meal-detail';
+  final Function favoriteMeals;
+  final Function isFavorite;
 
   Widget buildSectionTitle(
     BuildContext context,
@@ -50,7 +52,7 @@ class MealDetailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
+            SizedBox(
               width: double.infinity,
               height: 300,
               child: Image.network(
@@ -86,10 +88,10 @@ class MealDetailScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pop(mealId);
-        },
-        child: const Icon(Icons.delete),
+        onPressed: () => favoriteMeals(mealId),
+        child: isFavorite(mealId)
+            ? const Icon(Icons.star)
+            : const Icon(Icons.star_border),
         backgroundColor: Theme.of(context).colorScheme.secondary,
       ),
     );
