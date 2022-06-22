@@ -91,8 +91,10 @@ class MealDetailScreen extends StatelessWidget {
         onPressed: () => favoriteMeals(mealId),
         child: isFavorite(mealId)
             ? const Icon(Icons.star)
-            : const Icon(Icons.star_border),
-        backgroundColor: Theme.of(context).colorScheme.secondary,
+            : const Icon(
+                Icons.star_border,
+                color: Colors.black,
+              ),
       ),
     );
   }
